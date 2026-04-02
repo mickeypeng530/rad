@@ -7,7 +7,7 @@
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);min-height:100vh;color:#e0e0e0;display:flex;flex-direction:column}
-    .top-tabs{display:flex;background:rgba(0,0,0,0.3);border-bottom:2px solid rgba(100,181,246,0.3);padding:0 20px;position:sticky;top:0;z-index:100}
+    .top-tabs{display:flex;background:rgba(0,0,0,0.3h);border-bottom:2px solid rgba(100,181,246,0.3);padding:0 20px;position:sticky;top:0;z-index:100}
     .top-tab{padding:14px 24px;cursor:pointer;color:#888;font-size:14px;font-weight:600;border-bottom:3px solid transparent;transition:all 0.2s;user-select:none}
     .top-tab:hover{color:#bbb}
     .top-tab.active{color:#64b5f6;border-bottom-color:#64b5f6}
@@ -101,75 +101,75 @@
   <body>
 
     <div class="top-tabs">
-      <div class="top-tab active" onclick="switchTab('quicklinks')">📚 Quick Links</div>div>
-      <div class="top-tab" onclick="switchTab('notes')">📖 閱片筆記</div>div>
-    </div>div>
+      <div class="top-tab active" onclick="switchTab('quicklinks')">📚 Quick Links</div>
+      <div class="top-tab" onclick="switchTab('notes')">📖 閱片筆記</div>
+    </div>
 
     <div id="tab-quicklinks" class="tab-content active">
       <div class="container">
         <h1>📚 Radiology Quick Links</h1>
-      <div class="category"><div class="category-title">🧠 Head</div>div><div class="links">
-      <a href="https://docs.google.com/document/d/1qzse-EqI22CiZlBxHp5RjmKJmXeHcfXHhdHJ3E1IqV8/edit?usp=sharing" target="_blank" class="link-btn important" data-name="H&N Cancer Staging" onclick="trackClick(this)">H&N Cancer Staging</a>a>
-      <a href="https://docs.google.com/document/d/1diGdAXelXWgHOR0wvtLiwhAHK0jUUo8AOM0qMl6-2Go/edit?usp=sharing" target="_blank" class="link-btn" data-name="Sinus" onclick="trackClick(this)">Sinus</a>a>
-      <a href="https://radiologyassistant.nl/head-neck/orbita/pathology" target="_blank" class="link-btn" data-name="Orbit" onclick="trackClick(this)">Orbit</a>a>
-      <a href="https://docs.google.com/document/d/1qzse-EqI22CiZlBxHp5RjmKJmXeHcfXHhdHJ3E1IqV8/edit?usp=sharing" target="_blank" class="link-btn" data-name="Neck Lymph Node" onclick="trackClick(this)">Neck Lymph Node</a>a>
-      </div>div></div>div>
-      <div class="category"><div class="category-title">🫁 Chest</div>div><div class="links">
-      <a href="https://radiologyassistant.nl/chest/mediastinum/mediastinum-lymph-node-map" target="_blank" class="link-btn" data-name="Mediastinum LN" onclick="trackClick(this)">Mediastinum LN</a>a>
-      <a href="https://radiologyassistant.nl/chest/hrct/fibrosis-of-the-lung-on-hrct-imaging" target="_blank" class="link-btn important" data-name="Pulmonary Fibrosis" onclick="trackClick(this)">Pulmonary Fibrosis</a>a>
-      <a href="https://drive.google.com/file/d/13DzFxaZPhzk1AcxcsJI94a4ds1GLqDbT/view?usp=sharing" target="_blank" class="link-btn important" data-name="Lung RADS / LDCT" onclick="trackClick(this)">Lung RADS / LDCT</a>a>
-      </div>div></div>div>
-      <div class="category"><div class="category-title">🦴 MSK</div>div><div class="links">
-      <a href="https://docs.google.com/document/d/1orQdXOzuStBME2Dcpx7KbWZ3sr1QLjOpTDj_X8YtZtU/edit?usp=sharing" target="_blank" class="link-btn important" data-name="Arthro" onclick="trackClick(this)">Arthro</a>a>
-      <a href="https://radiologyassistant.nl/musculoskeletal/shoulder/instability" target="_blank" class="link-btn important" data-name="Shoulder Labrum" onclick="trackClick(this)">Shoulder Labrum</a>a>
-      <a href="https://docs.google.com/document/d/1gd3nJRKkRtZ1oER8PyfLJAANjImuAJu05nyJzXjIZ6A/edit?usp=sharing" target="_blank" class="link-btn important" data-name="Sarco" onclick="trackClick(this)">Sarco</a>a>
-      <a href="https://docs.google.com/presentation/d/1DwApuJEK6mmEiZzV1lnWHCDBVBFGaUQt6bz4E79urm8/edit?usp=sharing" target="_blank" class="link-btn" data-name="sTAME" onclick="trackClick(this)">sTAME</a>a>
-      <a href="https://docs.google.com/spreadsheets/d/1kFLuB2ccxRz5MrQBBtFrLJJ-8fkuGPz9xpthB-Tbc0g/edit?usp=sharing" target="_blank" class="link-btn" data-name="L spine 統計" onclick="trackClick(this)">L spine 統計</a>a>
-      <a href="https://docs.google.com/document/d/1lmRVRdhq4gGNoKrWcs2x3DmHd5FIskXedu9DG0gTJws/edit?usp=sharing" target="_blank" class="link-btn" data-name="Wrist" onclick="trackClick(this)">Wrist</a>a>
-      </div>div></div>div>
-      <div class="category"><div class="category-title">🔧 Tools</div>div><div class="links">
-      <a href="https://www.imaios.com/en/e-anatomy" target="_blank" class="link-btn" data-name="Imaios e-Anatomy" onclick="trackClick(this)">Imaios e-Anatomy</a>a>
-      <a href="https://mickeypeng530.github.io/cancer/ajcc/" target="_blank" class="link-btn important" data-name="AJCC Staging" onclick="trackClick(this)">AJCC Staging</a>a>
-      </div>div></div>div>
-      <div class="category" id="privateSection"><div class="category-title">🔒 Private <span id="lockStatus" style="font-size:12px;color:#888;margin-left:10px;"><input type="password" id="pwdInput" placeholder="密碼" style="width:80px;padding:3px 8px;border-radius:5px;border:1px solid #555;background:#2a2a4a;color:#fff;font-size:12px;"><button onclick="unlockPrivate()" style="padding:3px 10px;border-radius:5px;border:none;background:#4a4a6a;color:#fff;cursor:pointer;font-size:12px;">解鎖</button>button></span>span></div>div>
+      <div class="category"><div class="category-title">🧠 Head</div><div class="links">
+      <a href="https://docs.google.com/document/d/1qzse-EqI22CiZlBxHp5RjmKJmXeHcfXHhdHJ3E1IqV8/edit?usp=sharing" target="_blank" class="link-btn important" data-name="H&N Cancer Staging" onclick="trackClick(this)">H&N Cancer Staging</a>
+      <a href="https://docs.google.com/document/d/1diGdAXelXWgHOR0wvtLiwhAHK0jUUo8AOM0qMl6-2Go/edit?usp=sharing" target="_blank" class="link-btn" data-name="Sinus" onclick="trackClick(this)">Sinus</a>
+      <a href="https://radiologyassistant.nl/head-neck/orbita/pathology" target="_blank" class="link-btn" data-name="Orbit" onclick="trackClick(this)">Orbit</a>
+      <a href="https://docs.google.com/document/d/1qzse-EqI22CiZlBxHp5RjmKJmXeHcfXHhdHJ3E1IqV8/edit?usp=sharing" target="_blank" class="link-btn" data-name="Neck Lymph Node" onclick="trackClick(this)">Neck Lymph Node</a>
+      </div></div>
+      <div class="category"><div class="category-title">🫁 Chest</div><div class="links">
+      <a href="https://radiologyassistant.nl/chest/mediastinum/mediastinum-lymph-node-map" target="_blank" class="link-btn" data-name="Mediastinum LN" onclick="trackClick(this)">Mediastinum LN</a>
+      <a href="https://radiologyassistant.nl/chest/hrct/fibrosis-of-the-lung-on-hrct-imaging" target="_blank" class="link-btn important" data-name="Pulmonary Fibrosis" onclick="trackClick(this)">Pulmonary Fibrosis</a>
+      <a href="https://drive.google.com/file/d/13DzFxaZPhzk1AcxcsJI94a4ds1GLqDbT/view?usp=sharing" target="_blank" class="link-btn important" data-name="Lung RADS / LDCT" onclick="trackClick(this)">Lung RADS / LDCT</a>
+      </div></div>
+      <div class="category"><div class="category-title">🦴 MSK</div><div class="links">
+      <a href="https://docs.google.com/document/d/1orQdXOzuStBME2Dcpx7KbWZ3sr1QLjOpTDj_X8YtZtU/edit?usp=sharing" target="_blank" class="link-btn important" data-name="Arthro" onclick="trackClick(this)">Arthro</a>
+      <a href="https://radiologyassistant.nl/musculoskeletal/shoulder/instability" target="_blank" class="link-btn important" data-name="Shoulder Labrum" onclick="trackClick(this)">Shoulder Labrum</a>
+      <a href="https://docs.google.com/document/d/1gd3nJRKkRtZ1oER8PyfLJAANjImuAJu05nyJzXjIZ6A/edit?usp=sharing" target="_blank" class="link-btn important" data-name="Sarco" onclick="trackClick(this)">Sarco</a>
+      <a href="https://docs.google.com/presentation/d/1DwApuJEK6mmEiZzV1lnWHCDBVBFGaUQt6bz4E79urm8/edit?usp=sharing" target="_blank" class="link-btn" data-name="sTAME" onclick="trackClick(this)">sTAME</a>
+      <a href="https://docs.google.com/spreadsheets/d/1kFLuB2ccxRz5MrQBBtFrLJJ-8fkuGPz9xpthB-Tbc0g/edit?usp=sharing" target="_blank" class="link-btn" data-name="L spine 統計" onclick="trackClick(this)">L spine 統計</a>
+      <a href="https://docs.google.com/document/d/1lmRVRdhq4gGNoKrWcs2x3DmHd5FIskXedu9DG0gTJws/edit?usp=sharing" target="_blank" class="link-btn" data-name="Wrist" onclick="trackClick(this)">Wrist</a>
+      </div></div>
+      <div class="category"><div class="category-title">🔧 Tools</div><div class="links">
+      <a href="https://www.imaios.com/en/e-anatomy" target="_blank" class="link-btn" data-name="Imaios e-Anatomy" onclick="trackClick(this)">Imaios e-Anatomy</a>
+      <a href="https://mickeypeng530.github.io/cancer/ajcc/" target="_blank" class="link-btn important" data-name="AJCC Staging" onclick="trackClick(this)">AJCC Staging</a>
+      </div></div>
+      <div class="category" id="privateSection"><div class="category-title">🔒 Private <span id="lockStatus" style="font-size:12px;color:#888;margin-left:10px;"><input type="password" id="pwdInput" placeholder="密碼" style="width:80px;padding:3px 8px;border-radius:5px;border:1px solid #555;background:#2a2a4a;color:#fff;font-size:12px;"><button onclick="unlockPrivate()" style="padding:3px 10px;border-radius:5px;border:none;background:#4a4a6a;color:#fff;cursor:pointer;font-size:12px;">解鎖</button></span></div>
       <div class="links" id="privateLinks" style="display:none;">
-      <a href="https://docs.google.com/spreadsheets/d/1nxi7OSd9E6m49kan3u5bfcCsZlYam0dg9OAgZ0u_GHw/edit?usp=sharing" target="_blank" class="link-btn">每日</a>a>
-      <a href="https://drive.google.com/drive/folders/14o_IGOrcjl069eCOxv7c-6s7C_eBIiE0?usp=sharing" target="_blank" class="link-btn">OPD</a>a>
-      <a href="https://www.femh.org.tw/webregs/RegSec1.aspx?mtypes=0&ttypes=0&ptypes=-1&id=0340&uid=" target="_blank" class="link-btn">掛號</a>a>
-      <a href="https://mickeypeng530.github.io/case/" target="_blank" class="link-btn">Procedure list</a>a>
-      </div>div></div>div>
-      <div class="stats-section"><div class="stats-title">📊 使用統計</div>div>
-      <div class="stats-summary"><div class="stat-box"><div class="stat-value" id="totalClicks">0</div>div><div class="stat-label">總點擊數</div>div></div>div><div class="stat-box"><div class="stat-value" id="totalLinks">0</div>div><div class="stat-label">使用過的連結</div>div></div>div></div>div>
-      <table class="stats-table"><thead><tr><th>連結名稱</th><th>點擊次數</th><th>最近使用</th></tr></thead><tbody id="statsBody"><tr><td colspan="3" class="empty-stats">尚無點擊記錄</td>td></tr></tbody>tbody></table>table>
-      <div class="stats-actions"><button class="btn btn-primary" onclick="exportCSV()">📥 匯出 CSV</button>button><button class="btn btn-secondary" onclick="clearStats()">🗑️ 清除統計</button>button></div>div></div>div>
-      <div class="footer">按 Ctrl+D 加入書籤 | 統計資料存在本機瀏覽器</div>div>
-      </div>div></div>div>
+      <a href="https://docs.google.com/spreadsheets/d/1nxi7OSd9E6m49kan3u5bfcCsZlYam0dg9OAgZ0u_GHw/edit?usp=sharing" target="_blank" class="link-btn">每日</a>
+      <a href="https://drive.google.com/drive/folders/14o_IGOrcjl069eCOxv7c-6s7C_eBIiE0?usp=sharing" target="_blank" class="link-btn">OPD</a>
+      <a href="https://www.femh.org.tw/webregs/RegSec1.aspx?mtypes=0&ttypes=0&ptypes=-1&id=0340&uid=" target="_blank" class="link-btn">掛號</a>
+      <a href="https://mickeypeng530.github.io/case/" target="_blank" class="link-btn">Procedure list</a>
+      </div></div>
+      <div class="stats-section"><div class="stats-title">📊 使用統計</div>
+      <div class="stats-summary"><div class="stat-box"><div class="stat-value" id="totalClicks">0</div><div class="stat-label">總點擊數</div></div><div class="stat-box"><div class="stat-value" id="totalLinks">0</div><div class="stat-label">使用過的連結</div></div></div>
+      <table class="stats-table"><thead><tr><th>連結名稱</th><th>點擊次數</th><th>最近使用</th></tr></thead><tbody id="statsBody"><tr><td colspan="3" class="empty-stats">尚無點擊記錄</td></tr></tbody></table>
+      <div class="stats-actions"><button class="btn btn-primary" onclick="exportCSV()">📥 匯出 CSV</button><button class="btn btn-secondary" onclick="clearStats()">🗑️ 清除統計</button></div></div>
+      <div class="footer">按 Ctrl+D 加入書籤 | 統計資料存在本機瀏覽器</div>
+      </div></div>
   
   <div id="tab-notes" class="tab-content">
   <!-- 密碼鎖定覆蓋層 -->
   <div class="lock-overlay" id="notesLockOverlay">
-  <div class="lock-icon">🔒</div>div>
-  <div class="lock-title">閱片筆記需要密碼</div>div>
+  <div class="lock-icon">🔒</div>
+  <div class="lock-title">閱片筆記需要密碼</div>
   <div class="lock-form">
   <input type="password" id="notesPwdInput" placeholder="輸入密碼" onkeypress="if(event.key==='Enter')unlockNotes()">
-  <button onclick="unlockNotes()">解鎖</button>button>
-  </div>div>
-  </div>div>
+  <button onclick="unlockNotes()">解鎖</button>
+  </div>
+  </div>
   <div class="notes-sidebar" id="notesSidebar" style="display:none;">
-  <div class="sidebar-search"><input type="text" id="noteSearch" placeholder="🔍 搜尋筆記..." oninput="filterNotes(this.value)"></div>div>
-  <div id="sidebarTree"></div>div>
-  </div>div>
+  <div class="sidebar-search"><input type="text" id="noteSearch" placeholder="🔍 搜尋筆記..." oninput="filterNotes(this.value)"></div>
+  <div id="sidebarTree"></div>
+  </div>
   <div class="notes-main" id="notesMain" style="display:none;">
   <div class="breadcrumb-bar">
-  <div class="breadcrumb" id="breadcrumb"><span style="color:#555;">← 從左側選擇筆記</span>span></div>div>
-  <a class="open-drive" id="driveLink" href="#" target="_blank" style="display:none;">在 Drive 開啟 ↗</a>a>
-  </div>div>
+  <div class="breadcrumb" id="breadcrumb"><span style="color:#555;">← 從左側選擇筆記</span></div>
+  <a class="open-drive" id="driveLink" href="#" target="_blank" style="display:none;">在 Drive 開啟 ↗</a>
+  </div>
   <div class="notes-placeholder" id="notePlaceholder">
-  <div style="font-size:40px;">📖</div>div>
+  <div style="font-size:40px;">📖</div>
   <div>選擇左側的筆記開始閱讀</div>
   <div class="hint">點擊分類展開，再點擊筆記名稱</div>
   </div>
-  <iframe id="noteFrame" style="display:none;" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>iframe>
+  <iframe id="noteFrame" style="display:none;" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
   </div>
   </div>
   
@@ -387,7 +387,7 @@
     });
   </script>
   </body>
-</html>html>
+</html>
   </script></div></tr></th></th></tr></thead></h1>
   </body>
   </style></title>
