@@ -7,7 +7,7 @@
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);min-height:100vh;color:#e0e0e0;display:flex;flex-direction:column}
-    .top-tabs{display:flex;background:rgba(0,0,0,0.3h);border-bottom:2px solid rgba(100,181,246,0.3);padding:0 20px;position:sticky;top:0;z-index:100}
+    .top-tabs{display:flex;background:rgba(0,0,0,0.3);border-bottom:2px solid rgba(100,181,246,0.3);padding:0 20px;position:sticky;top:0;z-index:100}
     .top-tab{padding:14px 24px;cursor:pointer;color:#888;font-size:14px;font-weight:600;border-bottom:3px solid transparent;transition:all 0.2s;user-select:none}
     .top-tab:hover{color:#bbb}
     .top-tab.active{color:#64b5f6;border-bottom-color:#64b5f6}
@@ -126,6 +126,7 @@
       <a href="https://docs.google.com/presentation/d/1DwApuJEK6mmEiZzV1lnWHCDBVBFGaUQt6bz4E79urm8/edit?usp=sharing" target="_blank" class="link-btn" data-name="sTAME" onclick="trackClick(this)">sTAME</a>
       <a href="https://docs.google.com/spreadsheets/d/1kFLuB2ccxRz5MrQBBtFrLJJ-8fkuGPz9xpthB-Tbc0g/edit?usp=sharing" target="_blank" class="link-btn" data-name="L spine 統計" onclick="trackClick(this)">L spine 統計</a>
       <a href="https://docs.google.com/document/d/1lmRVRdhq4gGNoKrWcs2x3DmHd5FIskXedu9DG0gTJws/edit?usp=sharing" target="_blank" class="link-btn" data-name="Wrist" onclick="trackClick(this)">Wrist</a>
+      <a href="https://mickeypeng530.github.io/mskbook" target="_blank" class="link-btn important" data-name="MSK Book" onclick="trackClick(this)">MSK Book</a>
       </div></div>
       <div class="category"><div class="category-title">🔧 Tools</div><div class="links">
       <a href="https://www.imaios.com/en/e-anatomy" target="_blank" class="link-btn" data-name="Imaios e-Anatomy" onclick="trackClick(this)">Imaios e-Anatomy</a>
@@ -137,6 +138,7 @@
       <a href="https://drive.google.com/drive/folders/14o_IGOrcjl069eCOxv7c-6s7C_eBIiE0?usp=sharing" target="_blank" class="link-btn">OPD</a>
       <a href="https://www.femh.org.tw/webregs/RegSec1.aspx?mtypes=0&ttypes=0&ptypes=-1&id=0340&uid=" target="_blank" class="link-btn">掛號</a>
       <a href="https://mickeypeng530.github.io/case/" target="_blank" class="link-btn">Procedure list</a>
+      <a href="https://mickeypeng530.github.io/fin/" target="_blank" class="link-btn">Fin</a>
       </div></div>
       <div class="stats-section"><div class="stats-title">📊 使用統計</div>
       <div class="stats-summary"><div class="stat-box"><div class="stat-value" id="totalClicks">0</div><div class="stat-label">總點擊數</div></div><div class="stat-box"><div class="stat-value" id="totalLinks">0</div><div class="stat-label">使用過的連結</div></div></div>
@@ -146,7 +148,6 @@
       </div></div>
   
   <div id="tab-notes" class="tab-content">
-  <!-- 密碼鎖定覆蓋層 -->
   <div class="lock-overlay" id="notesLockOverlay">
   <div class="lock-icon">🔒</div>
   <div class="lock-title">閱片筆記需要密碼</div>
@@ -174,12 +175,10 @@
   </div>
   
   <script>
-    // 密碼
     var PASSWORD = 'peng';
     var notesUnlocked = false;
     var notesData = null;
 
-    // Tab 切換
     function switchTab(t){
         document.querySelectorAll('.tab-content').forEach(e=>e.classList.remove('active'));
         document.querySelectorAll('.top-tab').forEach(e=>e.classList.remove('active'));
@@ -189,7 +188,6 @@
         });
     }
 
-    // 解鎖筆記
     function unlockNotes(){
         var p=document.getElementById('notesPwdInput').value;
         if(p===PASSWORD){
@@ -204,7 +202,6 @@
         }
     }
 
-    // 載入筆記資料
     function loadNotesData(){
         if(notesData){ renderSidebar(); return; }
         fetch('notes.json')
@@ -216,7 +213,6 @@
           });
     }
 
-    // 取得圖示
     function getIcon(type){
         if(type==='doc')return '📄';
         if(type==='slide')return '📊';
@@ -224,13 +220,11 @@
         return '📄';
     }
 
-    // 遞迴渲染節點
     function renderNode(node, depth, breadcrumbPath){
         var html='';
         var depthClass = 'depth-'+Math.min(depth,4);
         var currentPath = breadcrumbPath ? breadcrumbPath+' \u203a '+node.name : node.name;
 
-        // 節點標題（可展開的資料夾）
         html+='<div class="node-header '+depthClass+'" onclick="toggleNode(this)" data-folder="'+(node.folder||'')+'">';
         html+='<span class="arrow">\u25b6</span>'+node.name;
         if(node.folder){
@@ -238,10 +232,8 @@
         }
         html+='</div>';
 
-        // 子內容容器
         html+='<div class="node-children">';
 
-        // 這個節點的直接筆記
             if(node.notes && node.notes.length>0){
                   node.notes.forEach(function(note){
                           html+='<div class="note-item '+depthClass+'" onclick="loadNote(this)" data-title="'+note.title+'" data-cat="'+currentPath+'" data-url="'+note.url+'" data-drive="'+note.url+'">';
@@ -249,7 +241,6 @@
                   });
             }
 
-        // 遞迴渲染子分類
         if(node.subcategories && node.subcategories.length>0){
               node.subcategories.forEach(function(sub){
                       html+=renderNode(sub, depth+1, currentPath);
@@ -260,7 +251,6 @@
         return html;
     }
 
-    // 渲染側邊欄
     function renderSidebar(){
         var html='';
         notesData.categories.forEach(function(cat){
@@ -269,14 +259,12 @@
         document.getElementById('sidebarTree').innerHTML=html;
     }
 
-    // 展開/收合（統一）
     function toggleNode(el){
         el.classList.toggle('open');
         var c=el.nextElementSibling;
         if(c) c.classList.toggle('open');
     }
 
-    // 載入筆記
     function loadNote(el){
         document.querySelectorAll('.note-item').forEach(n=>n.classList.remove('active'));
         el.classList.add('active');
@@ -285,7 +273,6 @@
         var url=el.getAttribute('data-url');
         var drive=el.getAttribute('data-drive');
 
-        // 找最近的 folder link
         var catFolder='';
         var p=el.parentElement;
         while(p){
@@ -327,7 +314,6 @@
         }
     }
 
-    // 搜尋筆記
     function filterNotes(q){
         q=q.toLowerCase().trim();
         var items=document.querySelectorAll('.note-item');
@@ -337,13 +323,11 @@
               headers.forEach(function(h){h.style.display=''});
               return;
         }
-        // 先隱藏所有
         items.forEach(function(item){
               var t=item.getAttribute('data-title').toLowerCase();
               var c=(item.getAttribute('data-cat')||'').toLowerCase();
               if(t.includes(q)||c.includes(q)){
                       item.style.display='';
-                      // 展開所有父層
                       var p=item.parentElement;
                       while(p){
                                 if(p.classList.contains('node-children')){
@@ -358,7 +342,6 @@
         });
     }
 
-    // Quick Links 統計功能
     function getStats(){var d=localStorage.getItem('radiologyLinkStats');return d?JSON.parse(d):{}}
     function saveStats(s){localStorage.setItem('radiologyLinkStats',JSON.stringify(s))}
     function trackClick(el){var n=el.getAttribute('data-name');var s=getStats();if(!s[n])s[n]={count:0,lastClick:null};s[n].count++;s[n].lastClick=new Date().toISOString();saveStats(s);updateStatsDisplay()}
@@ -367,7 +350,6 @@
     function exportCSV(){var s=getStats();var e=Object.entries(s).sort(function(a,b){return b[1].count-a[1].count});if(e.length===0){alert('沒有資料可匯出');return}var c='連結名稱,點擊次數,最近使用\n';e.forEach(function(x){c+='"'+x[0]+'",'+x[1].count+','+(x[1].lastClick||'')+'\n'});var b=new Blob([c],{type:'text/csv;charset=utf-8;'});var u=URL.createObjectURL(b);var a=document.createElement('a');a.href=u;a.download='radiology-links-stats-'+new Date().toISOString().split('T')[0]+'.csv';a.click();URL.revokeObjectURL(u)}
     function clearStats(){if(confirm('確定要清除所有統計資料嗎？')){localStorage.removeItem('radiologyLinkStats');updateStatsDisplay()}}
 
-    // Private 區塊解鎖
     function unlockPrivate(){
         var p=document.getElementById('pwdInput').value;
         if(p===PASSWORD){
@@ -379,7 +361,6 @@
         }
     }
 
-    // 初始化
     document.addEventListener('DOMContentLoaded',function(){
         document.getElementById('pwdInput').addEventListener('keypress',function(e){if(e.key==='Enter')unlockPrivate()});
         updateStatsDisplay();
@@ -388,7 +369,3 @@
   </script>
   </body>
 </html>
-  </script></div></tr></th></th></tr></thead></h1>
-  </body>
-  </style></title>
-  </head>
