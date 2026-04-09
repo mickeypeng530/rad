@@ -43,8 +43,10 @@
     .btn-secondary:hover{background:rgba(255,255,255,0.2)}
     .empty-stats{text-align:center;padding:30px;color:#666;font-style:italic}
     .footer{text-align:center;margin-top:40px;color:#666;font-size:12px}
-    #tab-notes{flex-direction:row;height:calc(100vh - 49px);position:relative}
-    .notes-sidebar{width:280px;min-width:280px;background:rgba(0,0,0,0.25);border-right:1px solid rgba(255,255,255,0.1);overflow-y:auto;padding:12px 0}
+    
+    /* 閱片筆記 & 待讀清單 共用樣式 */
+    #tab-notes, #tab-reading{flex-direction:row;height:calc(100vh - 49px);position:relative}
+    .notes-sidebar, .reading-sidebar{width:280px;min-width:280px;background:rgba(0,0,0,0.25);border-right:1px solid rgba(255,255,255,0.1);overflow-y:auto;padding:12px 0}
     .sidebar-search{padding:0 12px 12px}
     .sidebar-search input{width:100%;padding:8px 12px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:#e0e0e0;font-size:13px;outline:none}
     .sidebar-search input:focus{border-color:#64b5f6}
@@ -63,16 +65,16 @@
     .node-header.depth-4{padding:7px 16px 7px 80px;color:#80cbc4;font-size:11px;font-weight:600}
     .node-children{display:none}
     .node-children.open{display:block}
-    .note-item{cursor:pointer;font-size:12.5px;color:#ccc;transition:all 0.15s;display:flex;align-items:center;gap:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .note-item:hover{background:rgba(100,181,246,0.1);color:#fff}
-    .note-item.active{background:rgba(100,181,246,0.2);color:#64b5f6;font-weight:600}
-    .note-item .icon{font-size:11px;opacity:0.6;flex-shrink:0}
-    .note-item.depth-0{padding:6px 16px 6px 32px}
-    .note-item.depth-1{padding:6px 16px 6px 48px}
-    .note-item.depth-2{padding:6px 16px 6px 64px}
-    .note-item.depth-3{padding:6px 16px 6px 80px}
-    .note-item.depth-4{padding:6px 16px 6px 96px}
-    .notes-main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+    .note-item, .reading-item{cursor:pointer;font-size:12.5px;color:#ccc;transition:all 0.15s;display:flex;align-items:center;gap:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .note-item:hover, .reading-item:hover{background:rgba(100,181,246,0.1);color:#fff}
+    .note-item.active, .reading-item.active{background:rgba(100,181,246,0.2);color:#64b5f6;font-weight:600}
+    .note-item .icon, .reading-item .icon{font-size:11px;opacity:0.6;flex-shrink:0}
+    .note-item.depth-0, .reading-item.depth-0{padding:6px 16px 6px 32px}
+    .note-item.depth-1, .reading-item.depth-1{padding:6px 16px 6px 48px}
+    .note-item.depth-2, .reading-item.depth-2{padding:6px 16px 6px 64px}
+    .note-item.depth-3, .reading-item.depth-3{padding:6px 16px 6px 80px}
+    .note-item.depth-4, .reading-item.depth-4{padding:6px 16px 6px 96px}
+    .notes-main, .reading-main{flex:1;display:flex;flex-direction:column;overflow:hidden}
     .breadcrumb-bar{padding:10px 20px;background:rgba(0,0,0,0.2);border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;min-height:42px}
     .breadcrumb{font-size:12px;color:#888}
     .breadcrumb span{color:#aaa}
@@ -81,9 +83,9 @@
     .breadcrumb .sep{margin:0 6px;color:#555}
     .open-drive{font-size:12px;color:#64b5f6;text-decoration:none;opacity:0.8;transition:opacity 0.2s}
     .open-drive:hover{opacity:1;text-decoration:underline}
-    .notes-main iframe{flex:1;border:none;background:#fff}
-    .notes-placeholder{flex:1;display:flex;align-items:center;justify-content:center;color:#555;font-size:15px;flex-direction:column;gap:10px}
-    .notes-placeholder .hint{font-size:12px;color:#444}
+    .notes-main iframe, .reading-main iframe{flex:1;border:none;background:#fff}
+    .notes-placeholder, .reading-placeholder{flex:1;display:flex;align-items:center;justify-content:center;color:#555;font-size:15px;flex-direction:column;gap:10px}
+    .notes-placeholder .hint, .reading-placeholder .hint{font-size:12px;color:#444}
     .lock-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(26,26,46,0.98);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:50}
     .lock-overlay .lock-icon{font-size:60px;margin-bottom:20px}
     .lock-overlay .lock-title{font-size:18px;color:#64b5f6;margin-bottom:20px}
@@ -91,9 +93,27 @@
     .lock-overlay input{padding:10px 15px;border-radius:8px;border:1px solid #555;background:#2a2a4a;color:#fff;font-size:14px;width:150px}
     .lock-overlay button{padding:10px 20px;border-radius:8px;border:none;background:#4caf50;color:#fff;cursor:pointer;font-size:14px}
     .lock-overlay button:hover{background:#43a047}
+    
+    /* 待讀清單專用樣式 */
+    .reading-sidebar{width:300px;min-width:300px}
+    .reading-item{padding:8px 16px !important}
+    .reading-item .file-info{display:flex;flex-direction:column;overflow:hidden;flex:1}
+    .reading-item .file-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .reading-item .file-meta{font-size:10px;color:#666;margin-top:2px}
+    .folder-header{padding:12px 16px;color:#64b5f6;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none;border-bottom:1px solid rgba(255,255,255,0.05)}
+    .folder-header:hover{background:rgba(100,181,246,0.08)}
+    .folder-header .arrow{font-size:10px;transition:transform 0.2s}
+    .folder-header.open .arrow{transform:rotate(90deg)}
+    .folder-contents{display:none;padding-bottom:8px}
+    .folder-contents.open{display:block}
+    .loading-msg{padding:20px;text-align:center;color:#666}
+    .error-msg{padding:20px;text-align:center;color:#f66}
+    .refresh-btn{position:absolute;top:12px;right:12px;background:rgba(255,255,255,0.1);border:none;color:#888;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:12px}
+    .refresh-btn:hover{background:rgba(100,181,246,0.2);color:#64b5f6}
+    
     @media(max-width:768px){
-      #tab-notes{flex-direction:column}
-      .notes-sidebar{width:100%;min-width:auto;max-height:45vh;border-right:none;border-bottom:1px solid rgba(255,255,255,0.1)}
+      #tab-notes, #tab-reading{flex-direction:column}
+      .notes-sidebar, .reading-sidebar{width:100%;min-width:auto;max-height:45vh;border-right:none;border-bottom:1px solid rgba(255,255,255,0.1)}
       .links{grid-template-columns:repeat(2,1fr)}
     }
     </style>
@@ -103,6 +123,7 @@
     <div class="top-tabs">
       <div class="top-tab active" onclick="switchTab('quicklinks')">📚 Quick Links</div>
       <div class="top-tab" onclick="switchTab('notes')">📖 閱片筆記</div>
+      <div class="top-tab" onclick="switchTab('reading')">📋 待讀清單</div>
     </div>
 
     <div id="tab-quicklinks" class="tab-content active">
@@ -147,6 +168,7 @@
       <div class="footer">按 Ctrl+D 加入書籤 | 統計資料存在本機瀏覽器</div>
       </div></div>
   
+  <!-- 閱片筆記 Tab -->
   <div id="tab-notes" class="tab-content">
   <div class="lock-overlay" id="notesLockOverlay">
   <div class="lock-icon">🔒</div>
@@ -173,19 +195,49 @@
   <iframe id="noteFrame" style="display:none;" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
   </div>
   </div>
+
+  <!-- 待讀清單 Tab -->
+  <div id="tab-reading" class="tab-content">
+  <div class="reading-sidebar" style="position:relative;">
+  <button class="refresh-btn" onclick="loadReadingList(true)">🔄 重新整理</button>
+  <div class="sidebar-search"><input type="text" id="readingSearch" placeholder="🔍 搜尋檔案..." oninput="filterReading(this.value)"></div>
+  <div id="readingTree"><div class="loading-msg">載入中...</div></div>
+  </div>
+  <div class="reading-main">
+  <div class="breadcrumb-bar">
+  <div class="breadcrumb" id="readingBreadcrumb"><span style="color:#555;">← 從左側選擇檔案</span></div>
+  <a class="open-drive" id="readingDriveLink" href="#" target="_blank" style="display:none;">在 Drive 開啟 ↗</a>
+  </div>
+  <div class="reading-placeholder" id="readingPlaceholder">
+  <div style="font-size:40px;">📋</div>
+  <div>選擇左側的檔案開始閱讀</div>
+  <div class="hint">支援 PDF、PPT、Word、圖片等格式</div>
+  </div>
+  <iframe id="readingFrame" style="display:none;" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+  </div>
+  </div>
   
   <script>
     var PASSWORD = 'peng';
     var notesUnlocked = false;
     var notesData = null;
 
+    // Google Drive API 設定
+    var DRIVE_API_KEY = 'AIzaSyDSpHyWRS4gj_pmRcXSSQqArpwMnTwIOS8';
+    var READING_FOLDER_ID = '18f_K92q5WKWt4kdh397Kc-3VaZO4AH_K';
+    var readingData = null;
+
     function switchTab(t){
         document.querySelectorAll('.tab-content').forEach(e=>e.classList.remove('active'));
         document.querySelectorAll('.top-tab').forEach(e=>e.classList.remove('active'));
         document.getElementById('tab-'+t).classList.add('active');
         document.querySelectorAll('.top-tab').forEach(e=>{
-              if((t==='quicklinks'&&e.textContent.includes('Quick'))||(t==='notes'&&e.textContent.includes('筆記')))e.classList.add('active');
+              if((t==='quicklinks'&&e.textContent.includes('Quick'))||(t==='notes'&&e.textContent.includes('筆記'))||(t==='reading'&&e.textContent.includes('待讀')))e.classList.add('active');
         });
+        // 切換到待讀清單時載入
+        if(t==='reading' && !readingData){
+            loadReadingList();
+        }
     }
 
     function unlockNotes(){
@@ -214,21 +266,25 @@
     }
 
     function getIcon(type){
-        if(type==='doc')return '📄';
-        if(type==='slide')return '📊';
-        if(type==='pdf')return '📎';
+        if(type==='doc' || type==='application/vnd.google-apps.document')return '📄';
+        if(type==='slide' || type==='application/vnd.google-apps.presentation')return '📊';
+        if(type==='pdf' || type==='application/pdf')return '📕';
+        if(type==='application/vnd.openxmlformats-officedocument.presentationml.presentation')return '📊';
+        if(type==='application/vnd.openxmlformats-officedocument.wordprocessingml.document')return '📄';
+        if(type==='application/vnd.google-apps.folder')return '📁';
+        if(type && type.startsWith('image/'))return '🖼️';
         return '📄';
     }
 
     function renderNode(node, depth, breadcrumbPath){
         var html='';
         var depthClass = 'depth-'+Math.min(depth,4);
-        var currentPath = breadcrumbPath ? breadcrumbPath+' \u203a '+node.name : node.name;
+        var currentPath = breadcrumbPath ? breadcrumbPath+' › '+node.name : node.name;
 
         html+='<div class="node-header '+depthClass+'" onclick="toggleNode(this)" data-folder="'+(node.folder||'')+'">';
-        html+='<span class="arrow">\u25b6</span>'+node.name;
+        html+='<span class="arrow">▶</span>'+node.name;
         if(node.folder){
-              html+='<a class="folder-link" href="'+node.folder+'" target="_blank" onclick="event.stopPropagation()">\ud83d\udcc2</a>';
+              html+='<a class="folder-link" href="'+node.folder+'" target="_blank" onclick="event.stopPropagation()">📂</a>';
         }
         html+='</div>';
 
@@ -246,7 +302,6 @@
                       html+=renderNode(sub, depth+1, currentPath);
               });
         }
-
         html+='</div>';
         return html;
     }
@@ -284,13 +339,13 @@
         }
 
         var bcHtml='';
-        var parts=cat.split(' \u203a ');
+        var parts=cat.split(' › ');
         parts.forEach(function(part,i){
-              if(i>0) bcHtml+='<span class="sep">\u203a</span>';
+              if(i>0) bcHtml+='<span class="sep">›</span>';
               if(i===0&&catFolder) bcHtml+='<a href="'+catFolder+'" target="_blank">'+part+'</a>';
               else bcHtml+='<span>'+part+'</span>';
         });
-        bcHtml+='<span class="sep">\u203a</span><span style="color:#e0e0e0;">'+title+'</span>';
+        bcHtml+='<span class="sep">›</span><span style="color:#e0e0e0;">'+title+'</span>';
         document.getElementById('breadcrumb').innerHTML=bcHtml;
 
         var dl=document.getElementById('driveLink');
@@ -301,17 +356,22 @@
         if(url){
               ph.style.display='none';
               fr.style.display='block';
-              if(url.includes('docs.google.com')){
-                      fr.src=url.replace('/edit','/preview').split('?')[0]+'?embedded=true';
-              }else if(url.includes('drive.google.com/file')){
-                      fr.src=url.replace('/view','/preview').split('?')[0];
-              }else{
-                      fr.src=url;
-              }
+              fr.src = getPreviewUrl(url);
         }else{
               ph.style.display='flex';
               fr.style.display='none';
         }
+    }
+
+    function getPreviewUrl(url){
+        if(url.includes('docs.google.com/document')){
+            return url.replace('/edit','/preview').split('?')[0]+'?embedded=true';
+        }else if(url.includes('docs.google.com/presentation')){
+            return url.replace('/edit','/embed').split('?')[0];
+        }else if(url.includes('drive.google.com/file')){
+            return url.replace('/view','/preview').split('?')[0];
+        }
+        return url;
     }
 
     function filterNotes(q){
@@ -342,6 +402,201 @@
         });
     }
 
+    // ========== 待讀清單功能 ==========
+    
+    async function loadReadingList(forceRefresh){
+        var tree = document.getElementById('readingTree');
+        tree.innerHTML = '<div class="loading-msg">📂 載入中...</div>';
+        
+        try {
+            readingData = await fetchFolderContents(READING_FOLDER_ID);
+            renderReadingTree(readingData);
+        } catch(err) {
+            console.error('載入待讀清單失敗:', err);
+            tree.innerHTML = '<div class="error-msg">❌ 載入失敗<br><small>'+err.message+'</small></div>';
+        }
+    }
+
+    async function fetchFolderContents(folderId, folderName){
+        var url = 'https://www.googleapis.com/drive/v3/files?q="'+folderId+'"+in+parents+and+trashed=false&key='+DRIVE_API_KEY+'&fields=files(id,name,mimeType,modifiedTime,size)&orderBy=name';
+        var response = await fetch(url);
+        if(!response.ok){
+            var errData = await response.json();
+            throw new Error(errData.error?.message || '無法存取資料夾');
+        }
+        var data = await response.json();
+        
+        var result = {
+            id: folderId,
+            name: folderName || '待讀清單',
+            folders: [],
+            files: []
+        };
+        
+        for(var file of data.files){
+            if(file.mimeType === 'application/vnd.google-apps.folder'){
+                // 遞迴載入子資料夾
+                var subFolder = await fetchFolderContents(file.id, file.name);
+                result.folders.push(subFolder);
+            } else {
+                result.files.push(file);
+            }
+        }
+        
+        return result;
+    }
+
+    function renderReadingTree(data){
+        var html = '';
+        
+        // 先顯示子資料夾
+        data.folders.forEach(function(folder){
+            html += renderReadingFolder(folder, 0);
+        });
+        
+        // 再顯示根目錄的檔案
+        if(data.files.length > 0){
+            if(data.folders.length > 0){
+                html += '<div style="border-top:1px solid rgba(255,255,255,0.1);margin:8px 0;"></div>';
+            }
+            data.files.forEach(function(file){
+                html += renderReadingItem(file, 0, data.name);
+            });
+        }
+        
+        if(!html){
+            html = '<div class="loading-msg">資料夾是空的</div>';
+        }
+        
+        document.getElementById('readingTree').innerHTML = html;
+    }
+
+    function renderReadingFolder(folder, depth){
+        var html = '';
+        var hasContent = folder.files.length > 0 || folder.folders.length > 0;
+        
+        html += '<div class="folder-header" onclick="toggleReadingFolder(this)" style="padding-left:'+(16+depth*16)+'px">';
+        html += '<span class="arrow">▶</span> 📁 '+folder.name;
+        html += ' <span style="color:#666;font-size:11px;margin-left:auto;">'+(folder.files.length + folder.folders.length)+'</span>';
+        html += '</div>';
+        html += '<div class="folder-contents">';
+        
+        // 子資料夾
+        folder.folders.forEach(function(sub){
+            html += renderReadingFolder(sub, depth+1);
+        });
+        
+        // 檔案
+        folder.files.forEach(function(file){
+            html += renderReadingItem(file, depth+1, folder.name);
+        });
+        
+        html += '</div>';
+        return html;
+    }
+
+    function renderReadingItem(file, depth, folderName){
+        var icon = getIcon(file.mimeType);
+        var fileUrl = getFileUrl(file);
+        var modDate = file.modifiedTime ? new Date(file.modifiedTime).toLocaleDateString('zh-TW') : '';
+        
+        var html = '<div class="reading-item" onclick="loadReadingFile(this)" ';
+        html += 'data-id="'+file.id+'" ';
+        html += 'data-name="'+escapeHtml(file.name)+'" ';
+        html += 'data-type="'+file.mimeType+'" ';
+        html += 'data-url="'+fileUrl+'" ';
+        html += 'data-folder="'+escapeHtml(folderName)+'" ';
+        html += 'style="padding-left:'+(16+depth*16)+'px">';
+        html += '<span class="icon">'+icon+'</span>';
+        html += '<div class="file-info">';
+        html += '<div class="file-name">'+escapeHtml(file.name)+'</div>';
+        html += '<div class="file-meta">'+modDate+'</div>';
+        html += '</div></div>';
+        
+        return html;
+    }
+
+    function getFileUrl(file){
+        var baseUrl = 'https://drive.google.com/file/d/'+file.id;
+        if(file.mimeType === 'application/vnd.google-apps.document'){
+            return 'https://docs.google.com/document/d/'+file.id+'/edit';
+        } else if(file.mimeType === 'application/vnd.google-apps.presentation'){
+            return 'https://docs.google.com/presentation/d/'+file.id+'/edit';
+        } else if(file.mimeType === 'application/vnd.google-apps.spreadsheet'){
+            return 'https://docs.google.com/spreadsheets/d/'+file.id+'/edit';
+        }
+        return baseUrl+'/view';
+    }
+
+    function toggleReadingFolder(el){
+        el.classList.toggle('open');
+        var c = el.nextElementSibling;
+        if(c) c.classList.toggle('open');
+    }
+
+    function loadReadingFile(el){
+        document.querySelectorAll('.reading-item').forEach(n=>n.classList.remove('active'));
+        el.classList.add('active');
+        
+        var name = el.getAttribute('data-name');
+        var url = el.getAttribute('data-url');
+        var folder = el.getAttribute('data-folder');
+        var fileId = el.getAttribute('data-id');
+        
+        // 更新 breadcrumb
+        var bcHtml = '<span>'+folder+'</span><span class="sep">›</span><span style="color:#e0e0e0;">'+name+'</span>';
+        document.getElementById('readingBreadcrumb').innerHTML = bcHtml;
+        
+        // 更新 Drive 連結
+        var dl = document.getElementById('readingDriveLink');
+        dl.href = url;
+        dl.style.display = 'inline';
+        
+        // 載入預覽
+        var ph = document.getElementById('readingPlaceholder');
+        var fr = document.getElementById('readingFrame');
+        
+        ph.style.display = 'none';
+        fr.style.display = 'block';
+        fr.src = getPreviewUrl(url);
+    }
+
+    function filterReading(q){
+        q = q.toLowerCase().trim();
+        var items = document.querySelectorAll('.reading-item');
+        var folders = document.querySelectorAll('.folder-header');
+        
+        if(!q){
+            items.forEach(function(i){ i.style.display = ''; });
+            folders.forEach(function(f){ f.style.display = ''; });
+            return;
+        }
+        
+        items.forEach(function(item){
+            var name = item.getAttribute('data-name').toLowerCase();
+            if(name.includes(q)){
+                item.style.display = '';
+                // 展開父資料夾
+                var p = item.parentElement;
+                while(p){
+                    if(p.classList.contains('folder-contents')){
+                        p.classList.add('open');
+                        if(p.previousElementSibling) p.previousElementSibling.classList.add('open');
+                    }
+                    p = p.parentElement;
+                }
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+
+    function escapeHtml(str){
+        return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    // ========== Quick Links 功能 ==========
+
     function getStats(){var d=localStorage.getItem('radiologyLinkStats');return d?JSON.parse(d):{}}
     function saveStats(s){localStorage.setItem('radiologyLinkStats',JSON.stringify(s))}
     function trackClick(el){var n=el.getAttribute('data-name');var s=getStats();if(!s[n])s[n]={count:0,lastClick:null};s[n].count++;s[n].lastClick=new Date().toISOString();saveStats(s);updateStatsDisplay()}
@@ -365,6 +620,7 @@
         document.getElementById('pwdInput').addEventListener('keypress',function(e){if(e.key==='Enter')unlockPrivate()});
         updateStatsDisplay();
         if(window.location.hash==='#notes')switchTab('notes');
+        if(window.location.hash==='#reading')switchTab('reading');
     });
   </script>
   </body>
